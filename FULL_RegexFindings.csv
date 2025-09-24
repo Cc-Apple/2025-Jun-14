@@ -1,0 +1,6 @@
+,file,pattern,hits,samples
+0,/mnt/data/Template-1.txt,DroopCount,1,DroopCount
+1,/mnt/data/Template-1.txt,EraseDevice,1,EraseDevice
+3,/mnt/data/Template-1.txt,TRI_proactive,1,proactive_event_tracker
+4,/mnt/data/Template-1.txt,WiFiLQM,2,WifiLQMMetrics; WifiLQMM
+2,/mnt/data/Template-1.txt,log-power,1,logpower

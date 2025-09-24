@@ -1,0 +1,8 @@
+,file,size_scanned_bytes,has_unicode_escape,JP_TAMPER_hits,LEARNING_hits,MDM_hits,SYSTEM_hits,COMM_PWR_hits,APPS_hits,UI_HIJACK_hits,VENDORS_hits,VULN_hits,any_excluded_tokens,learning_overlap_count,learning_suspect,ws_ratio,max_ws_run,time_order_score,time_reversals,time_pairs,unique_dates_in_file
+5,/mnt/data/TTPs.txt,5360,False,7,9,0,1,0,0,0,0,0,False,8,True,0.23293357933579337,18,,,0,0
+4,/mnt/data/Template-1.txt,30386,True,1,3,9,16,10,24,7,8,5,True,1,True,0.08590991762062694,7,,,0,5
+0,/mnt/data/_template1_work_2025-06-14/extracted/Tajima/____________.csv,445,False,0,0,0,0,0,0,0,0,0,False,0,False,0.015730337078651686,1,1.0,0.0,5,0
+1,/mnt/data/_template1_work_2025-06-14/extracted/Tajima/history_search.txt,68,False,0,0,0,0,0,0,0,0,0,False,0,False,0.014705882352941176,1,,,0,0
+2,/mnt/data/_template1_work_2025-06-14/extracted/Tajima/不正証拠/_____________csv__preview_.csv,445,False,0,0,0,0,0,0,0,0,0,False,0,False,0.015730337078651686,1,1.0,0.0,5,0
+3,/mnt/data/_template1_work_2025-06-14/extracted/Tajima/不正証拠/viettel_bundle_analysis_report.txt,458,False,0,0,0,0,0,0,0,1,0,False,0,False,0.056768558951965066,2,,,0,0
+6,/mnt/data/Organize.csv,6336,False,0,0,0,9,0,0,2,0,0,False,0,False,0.027057316682676913,1,,,0,9

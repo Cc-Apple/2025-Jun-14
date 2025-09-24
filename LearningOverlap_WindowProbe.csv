@@ -1,0 +1,5 @@
+file,window_size,any_learning_in_window,any_jp_tamper_in_window
+/mnt/data/Template-1.txt,2222,True,True
+/mnt/data/Template-1.txt,8888,True,True
+/mnt/data/TTPs.txt,2222,True,True
+/mnt/data/Organize.csv,2222,False,False

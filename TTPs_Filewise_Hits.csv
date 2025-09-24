@@ -1,0 +1,74 @@
+,file,ttp,count
+11,/mnt/data/TTPs.txt,"""LEARNING_OVERLAP_MIN"": 1     # trial/ABTestの近傍重畳数閾値",1
+9,/mnt/data/TTPs.txt,"""MAX_WS_RUN_THRESH"": 200,     # 最大連続空白がこれより高ければブロック欠落疑い",1
+10,/mnt/data/TTPs.txt,"""ORDER_SCORE_THRESH"": 0.80,   # これより低ければ順序異常",1
+7,/mnt/data/TTPs.txt,"""SEGMENT_SIZE"": 2000,",1
+6,/mnt/data/TTPs.txt,"""WINDOW_RADIUS"": 30000,",1
+8,/mnt/data/TTPs.txt,"""WS_RATIO_HIGH"": 0.20,        # 空白率がこれより高ければ注意",1
+59,/mnt/data/TTPs.txt,"""indicator"": (ts[""order_score""] is not None and ts[""order_score""] < PARAMS[""ORDER_SCORE_THRESH""]) or (wm[""ws_ratio""] > PARAMS[""WS_RATIO_HIGH""]),",1
+65,/mnt/data/TTPs.txt,"""indicator"": None,",1
+62,/mnt/data/TTPs.txt,"""indicator"": bool(re.search(r""\\u[0-9a-fA-F]{4}|\\U[0-9a-fA-F]{8}"", window_text)),",1
+56,/mnt/data/TTPs.txt,"""indicator"": lof[""learning_suspect""] or (wm[""max_ws_run""] > PARAMS[""MAX_WS_RUN_THRESH""]),",1
+63,/mnt/data/TTPs.txt,"""interpretation"": ""Unicodeエスケープ等で表層だけ隠す工作の可能性""",1
+60,/mnt/data/TTPs.txt,"""interpretation"": ""timestamp逆行や空白率が高い — 素人的ミスの痕跡""",1
+66,/mnt/data/TTPs.txt,"""interpretation"": ""複数ドメイン/日で比較して局所偏在が強いなら '弱い' と判断""",1
+57,/mnt/data/TTPs.txt,"""interpretation"": ""試験/学習語の混入や大ブロック欠落（劇場型）の疑い""",1
+13,/mnt/data/TTPs.txt,"JP_TAMPER_TERMS = [""認証"",""設定"",""追跡"",""監視"",""削除"",""置換"",""改ざん"",""混入"",""差し替え""]",1
+14,/mnt/data/TTPs.txt,"LEARNING_TERMS = [""triald"",""TRILogEvent"",""trialExperiments"",""trialRollouts"",""ABTest"",""variant"",""bucket"",""trial""]",1
+5,/mnt/data/TTPs.txt,PARAMS = {,1
+24,/mnt/data/TTPs.txt,cur += 1,1
+21,/mnt/data/TTPs.txt,cur = 0,2
+27,/mnt/data/TTPs.txt,def nearby_learning_flags(window_text):,1
+50,/mnt/data/TTPs.txt,def personality_indicators(window_text):,1
+34,/mnt/data/TTPs.txt,def timestamp_order_score(window_text):,1
+15,/mnt/data/TTPs.txt,def whitespace_metrics(text):,1
+28,/mnt/data/TTPs.txt,flags = {},1
+31,/mnt/data/TTPs.txt,"flags[""learning_overlap_count""] = sum(1 for k,v in flags.items() if k!=""learning_overlap_count"" and v)",1
+32,/mnt/data/TTPs.txt,"flags[""learning_suspect""] = flags[""learning_overlap_count""] >= PARAMS[""LEARNING_OVERLAP_MIN""]",1
+30,/mnt/data/TTPs.txt,"flags[t] = bool(re.search(r""\b"" + re.escape(t) + r""\b"", window_text, flags=re.IGNORECASE))",1
+22,/mnt/data/TTPs.txt,for c in text:,1
+68,/mnt/data/TTPs.txt,"for k,v in indicators.items():",1
+29,/mnt/data/TTPs.txt,for t in LEARNING_TERMS:,1
+40,/mnt/data/TTPs.txt,for t in ts:,1
+46,/mnt/data/TTPs.txt,"forward = sum(1 for i in range(1,len(seq)) if seq[i] >= seq[i-1])",1
+4,/mnt/data/TTPs.txt,from collections import Counter,1
+38,/mnt/data/TTPs.txt,from datetime import datetime as dt,1
+23,/mnt/data/TTPs.txt,if c.isspace():,1
+25,/mnt/data/TTPs.txt,if cur > max_run: max_run = cur,1
+45,/mnt/data/TTPs.txt,if len(seq) < 2:,1
+36,/mnt/data/TTPs.txt,if len(ts) < 2:,1
+16,/mnt/data/TTPs.txt,if not text:,1
+69,/mnt/data/TTPs.txt,"if v[""indicator""] is True:",1
+3,/mnt/data/TTPs.txt,"import re, statistics",1
+54,/mnt/data/TTPs.txt,indicators = {},1
+58,/mnt/data/TTPs.txt,"indicators[""careless_flag""] = {",1
+55,/mnt/data/TTPs.txt,"indicators[""showoff_flag""] = {",1
+61,/mnt/data/TTPs.txt,"indicators[""smalltrick_flag""] = {",1
+71,/mnt/data/TTPs.txt,"indicators[""summary_score""] = score",1
+64,/mnt/data/TTPs.txt,"indicators[""weak_defense_flag""] = {",1
+52,/mnt/data/TTPs.txt,lof = nearby_learning_flags(window_text),1
+20,/mnt/data/TTPs.txt,max_run = 0,1
+44,/mnt/data/TTPs.txt,pass,1
+19,/mnt/data/TTPs.txt,"ratio = ws / max(1, len(text))",1
+33,/mnt/data/TTPs.txt,return flags,1
+37,/mnt/data/TTPs.txt,"return {""order_score"": None, ""reversals"": None, ""pairs"": 0}",2
+49,/mnt/data/TTPs.txt,"return {""order_score"": score, ""reversals"": reversals, ""pairs"": (len(seq)-1)}",1
+72,/mnt/data/TTPs.txt,"return {""whitespace"": wm, ""timestamp"": ts, ""learning"": lof, ""indicators"": indicators}",1
+17,/mnt/data/TTPs.txt,"return {""ws_ratio"": 0.0, ""max_ws_run"": 0}",1
+26,/mnt/data/TTPs.txt,"return {""ws_ratio"": ratio, ""max_ws_run"": max_run}",1
+47,/mnt/data/TTPs.txt,reversals = (len(seq)-1) - forward,1
+70,/mnt/data/TTPs.txt,score += 1,1
+67,/mnt/data/TTPs.txt,score = 0,1
+48,/mnt/data/TTPs.txt,score = forward / (len(seq)-1),1
+39,/mnt/data/TTPs.txt,seq = [],1
+42,/mnt/data/TTPs.txt,"seq.append(dt.strptime(t2, ""%Y-%m-%d %H:%M:%S""))",1
+43,/mnt/data/TTPs.txt,"seq.append(dt.strptime(t2, ""%Y-%m-%dT%H:%M:%S""))",1
+41,/mnt/data/TTPs.txt,"t2 = t.replace(""/"", ""-"").replace(""."", ""-"")",1
+35,/mnt/data/TTPs.txt,"ts = re.findall(r""\b20\d{2}[-/\.]\d{2}[-/\.]\d{2}[ T]\d{2}:\d{2}:\d{2}"", window_text)",1
+53,/mnt/data/TTPs.txt,ts = timestamp_order_score(window_text),1
+51,/mnt/data/TTPs.txt,wm = whitespace_metrics(window_text),1
+18,/mnt/data/TTPs.txt,ws = sum(1 for c in text if c.isspace()),1
+12,/mnt/data/TTPs.txt,},23
+1,/mnt/data/Template-1.txt,},3
+0,/mnt/data/_template1_work_2025-06-14/extracted/Tajima/history_search.txt,},2
+2,/mnt/data/TTPs.txt,相手の性格→手口」チェックリスト（差し込みテンプレをコード化したもの）,1

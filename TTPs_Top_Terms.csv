@@ -1,0 +1,72 @@
+,ttp,count
+69,},28
+18,cur = 0,2
+52,"return {""order_score"": None, ""reversals"": None, ""pairs"": 0}",2
+38,if not text:,1
+39,"if v[""indicator""] is True:",1
+40,"import re, statistics",1
+41,indicators = {},1
+42,"indicators[""careless_flag""] = {",1
+43,"indicators[""showoff_flag""] = {",1
+53,"return {""order_score"": score, ""reversals"": reversals, ""pairs"": (len(seq)-1)}",1
+45,"indicators[""summary_score""] = score",1
+46,"indicators[""weak_defense_flag""] = {",1
+47,lof = nearby_learning_flags(window_text),1
+48,max_run = 0,1
+49,pass,1
+50,"ratio = ws / max(1, len(text))",1
+51,return flags,1
+44,"indicators[""smalltrick_flag""] = {",1
+0,"""LEARNING_OVERLAP_MIN"": 1     # trial/ABTestの近傍重畳数閾値",1
+36,if len(seq) < 2:,1
+62,"seq.append(dt.strptime(t2, ""%Y-%m-%d %H:%M:%S""))",1
+68,ws = sum(1 for c in text if c.isspace()),1
+67,wm = whitespace_metrics(window_text),1
+66,ts = timestamp_order_score(window_text),1
+65,"ts = re.findall(r""\b20\d{2}[-/\.]\d{2}[-/\.]\d{2}[ T]\d{2}:\d{2}:\d{2}"", window_text)",1
+64,"t2 = t.replace(""/"", ""-"").replace(""."", ""-"")",1
+63,"seq.append(dt.strptime(t2, ""%Y-%m-%dT%H:%M:%S""))",1
+61,seq = [],1
+54,"return {""whitespace"": wm, ""timestamp"": ts, ""learning"": lof, ""indicators"": indicators}",1
+60,score = forward / (len(seq)-1),1
+59,score = 0,1
+58,score += 1,1
+57,reversals = (len(seq)-1) - forward,1
+56,"return {""ws_ratio"": ratio, ""max_ws_run"": max_run}",1
+55,"return {""ws_ratio"": 0.0, ""max_ws_run"": 0}",1
+37,if len(ts) < 2:,1
+35,if cur > max_run: max_run = cur,1
+1,"""MAX_WS_RUN_THRESH"": 200,     # 最大連続空白がこれより高ければブロック欠落疑い",1
+9,"""indicator"": lof[""learning_suspect""] or (wm[""max_ws_run""] > PARAMS[""MAX_WS_RUN_THRESH""]),",1
+15,"LEARNING_TERMS = [""triald"",""TRILogEvent"",""trialExperiments"",""trialRollouts"",""ABTest"",""variant"",""bucket"",""trial""]",1
+14,"JP_TAMPER_TERMS = [""認証"",""設定"",""追跡"",""監視"",""削除"",""置換"",""改ざん"",""混入"",""差し替え""]",1
+13,"""interpretation"": ""試験/学習語の混入や大ブロック欠落（劇場型）の疑い""",1
+12,"""interpretation"": ""複数ドメイン/日で比較して局所偏在が強いなら '弱い' と判断""",1
+11,"""interpretation"": ""timestamp逆行や空白率が高い — 素人的ミスの痕跡""",1
+10,"""interpretation"": ""Unicodeエスケープ等で表層だけ隠す工作の可能性""",1
+8,"""indicator"": bool(re.search(r""\\u[0-9a-fA-F]{4}|\\U[0-9a-fA-F]{8}"", window_text)),",1
+34,if c.isspace():,1
+7,"""indicator"": None,",1
+6,"""indicator"": (ts[""order_score""] is not None and ts[""order_score""] < PARAMS[""ORDER_SCORE_THRESH""]) or (wm[""ws_ratio""] > PARAMS[""WS_RATIO_HIGH""]),",1
+5,"""WS_RATIO_HIGH"": 0.20,        # 空白率がこれより高ければ注意",1
+4,"""WINDOW_RADIUS"": 30000,",1
+3,"""SEGMENT_SIZE"": 2000,",1
+2,"""ORDER_SCORE_THRESH"": 0.80,   # これより低ければ順序異常",1
+16,PARAMS = {,1
+17,cur += 1,1
+19,def nearby_learning_flags(window_text):,1
+20,def personality_indicators(window_text):,1
+21,def timestamp_order_score(window_text):,1
+22,def whitespace_metrics(text):,1
+23,flags = {},1
+24,"flags[""learning_overlap_count""] = sum(1 for k,v in flags.items() if k!=""learning_overlap_count"" and v)",1
+25,"flags[""learning_suspect""] = flags[""learning_overlap_count""] >= PARAMS[""LEARNING_OVERLAP_MIN""]",1
+26,"flags[t] = bool(re.search(r""\b"" + re.escape(t) + r""\b"", window_text, flags=re.IGNORECASE))",1
+27,for c in text:,1
+28,"for k,v in indicators.items():",1
+29,for t in LEARNING_TERMS:,1
+30,for t in ts:,1
+31,"forward = sum(1 for i in range(1,len(seq)) if seq[i] >= seq[i-1])",1
+32,from collections import Counter,1
+33,from datetime import datetime as dt,1
+70,相手の性格→手口」チェックリスト（差し込みテンプレをコード化したもの）,1

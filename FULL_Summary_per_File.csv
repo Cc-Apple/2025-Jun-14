@@ -1,0 +1,6 @@
+,file,size_scanned_bytes,JP_TAMPER_hits,LEARNING_hits,MDM_hits,SYSTEM_hits,COMM_PWR_hits,APPS_hits,UI_HIJACK_hits,VENDORS_hits,VULN_hits,any_excluded_tokens,hotspot_windows
+4,/mnt/data/Template-1.txt,30386,1,3,9,16,10,24,7,8,5,True,4
+0,/mnt/data/_template1_work_2025-06-14/extracted/Tajima/____________.csv,445,0,0,0,0,0,0,0,0,0,False,0
+1,/mnt/data/_template1_work_2025-06-14/extracted/Tajima/history_search.txt,68,0,0,0,0,0,0,0,0,0,False,0
+2,/mnt/data/_template1_work_2025-06-14/extracted/Tajima/不正証拠/_____________csv__preview_.csv,445,0,0,0,0,0,0,0,0,0,False,0
+3,/mnt/data/_template1_work_2025-06-14/extracted/Tajima/不正証拠/viettel_bundle_analysis_report.txt,458,0,0,0,0,0,0,0,1,0,False,0
